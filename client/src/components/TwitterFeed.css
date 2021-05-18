@@ -1,0 +1,29 @@
+.mainContainer {
+    display: flex;
+    width: 74%;
+    height: 40vw;
+    background-color: white;
+    margin: 5vh 13% 0vh 13%;
+
+}
+
+.feedContainer {
+    display: flex;
+    width: 100%;
+    background-color: #edeffa;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #edeffa;
+
+}
+
+.writeTweetContainer {
+    width: 100%;
+}
+
+
+
