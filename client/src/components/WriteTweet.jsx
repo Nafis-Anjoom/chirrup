@@ -3,26 +3,51 @@ import { Form } from 'react-bootstrap';
 import userPNG from './user.png';
 
 import './WriteTweet.css';
+const serverURL = "http://localhost:8000/tweets"; 
 
-export default class WriteTweet extends Component {
+function retrieveTweets() {
+    fetch(serverURL)
+        .then(response => response.json())
+        .then(tweets => {
+            console.log(tweets);
+        });
+} 
+
+export default class WriteTweet extends Component { 
     constructor(props) {
         super(props);
         this.state = {
-          value: 'Please write an essay about your favorite DOM element.'
+          tweet: ''
         };
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-      }
+    }
     
-      handleChange(event) {
+    handleChange(event) {
         this.setState({tweet: event.target.value});
-      }
+    }
     
-      handleSubmit(event) {
-        alert('An essay was submitted: ' + this.state.tweet);
-        event.preventDefault();
-      }
+    handleSubmit(event) {
+    console.log('An essay was submitted: ' + this.state.tweet);
+    event.preventDefault();
+
+    retrieveTweets();
+
+    fetch(serverURL, {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: {
+            'content-type' : 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(createdTweet => {
+        console.log(createdTweet);
+    })
+
+    }
+
     render() {
         return (
             <div className = "WriteTweetContainer">
@@ -49,7 +74,6 @@ export default class WriteTweet extends Component {
                                 
                             />
 
-                            
 
                             <div className = "SubmitButtonContainer">
                                 <input type = 'submit' class = "btn btn-dark" value = "tweet"/>
