@@ -39,10 +39,14 @@ app.post ('/tweets', (request, response) => {
     tweets
         .insert(tweet)
         .then(createdTweet => {
-            response.json(createdTweet);
-        })
-
-
+            tweets
+            .find()
+            .then(retrievedTweets => {
+                response.json(retrievedTweets)
+            })
+            console.log("response sent");
+            
+        });
 });
 
 app.listen(8000, () => {

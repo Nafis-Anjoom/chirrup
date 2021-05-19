@@ -24,11 +24,11 @@ export default class WriteTweet extends Component {
                 </div>
                 <div className = "formBodyContainer">
                     <div className = "formContainer">
-                        <Form inline className = "tweetForm" onSubmit = {this.props.submissionHanlder}>
+                        <Form inline className = "tweetForm" onSubmit = {this.props.submissionHanlder} onChange = {this.props.changeHandler}>
                             <textarea 
                                 className="tweetForm" 
                                 placeholder = "What's on your mind?"
-                                onChange={this.props.changeHandler}
+                                // onChange={this.props.changeHandler}
                             />
 
 
