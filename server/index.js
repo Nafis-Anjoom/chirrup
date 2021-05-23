@@ -10,9 +10,6 @@ const tweets = db.get('tweets');
 app.use(cors());
 app.use(express.json());
 
-function isValidTweet(tweetBody) {
-    return tweetBody.tweet && tweetBody.tweet.toString().trim() != '';
-}
 
 app.get('/', (request, response) => {
     response.json({

@@ -11,10 +11,9 @@ export default class TwtiterFeed extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          tweet: '',
-          tweets: [],
-          running: false
+          tweets: []
         };
+        this.tweet = '';
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -27,16 +26,16 @@ export default class TwtiterFeed extends Component {
 
     
     handleChange(event) {
-        this.state.tweet = event.target.value;
+        this.tweet = event.target.value;
     }
     
     handleSubmit(event) {
-        console.log('Tweet posted: ' + this.state.tweet);
+        console.log('Tweet posted: ' + this.tweet);
         event.preventDefault();
 
         fetch(serverURL, {
             method: 'POST',
-            body: JSON.stringify({tweet: this.state.tweet}),
+            body: JSON.stringify({tweet: this.tweet}),
             headers: {
                 'content-type' : 'application/json'
             }

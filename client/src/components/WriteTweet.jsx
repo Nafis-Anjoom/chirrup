@@ -28,7 +28,6 @@ export default class WriteTweet extends Component {
                             <textarea 
                                 className="tweetForm" 
                                 placeholder = "What's on your mind?"
-                                // onChange={this.props.changeHandler}
                             />
 
 
